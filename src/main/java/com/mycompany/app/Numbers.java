@@ -18,6 +18,7 @@ public class Numbers {
         Properties prop = new Properties();
         LOGGER.debug("Try load properties file");
         prop.load(Numbers.class.getClassLoader().getResourceAsStream("application.properties"));
+        LOGGER.debug("Load successful");
         String propMax = prop.getProperty("max");
         String propMin = prop.getProperty("min");
         String propInc = prop.getProperty("inc");
