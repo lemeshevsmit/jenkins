@@ -11,7 +11,7 @@ import java.util.Properties;
 public class Numbers {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Numbers.class);
-    private static final String FORMAT = "| {} * {} = {} ";
+    private static final String FORMAT = "| {} * {} = {}";
 
 
     String calculate() throws NullPointerException, NumberFormatException, IOException {
