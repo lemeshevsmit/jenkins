@@ -67,6 +67,7 @@ public class Numbers {
                 }
             }
         }
+        LOGGER.debug("End");
         return type;
     }
 
