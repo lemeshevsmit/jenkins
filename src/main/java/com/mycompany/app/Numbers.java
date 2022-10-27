@@ -16,11 +16,13 @@ public class Numbers {
 
     String calculate() throws NullPointerException, NumberFormatException, IOException {
         Properties prop = new Properties();
+        LOGGER.debug("Try load properties file");
         prop.load(Numbers.class.getClassLoader().getResourceAsStream("application.properties"));
         String propMax = prop.getProperty("max");
         String propMin = prop.getProperty("min");
         String propInc = prop.getProperty("inc");
         String type = System.getProperty("type");
+        LOGGER.debug("Try check input type");
         if (type == null) {
             calculateInt(propMax, propMin, propInc);
             return "integer";
