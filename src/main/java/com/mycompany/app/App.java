@@ -1,15 +1,14 @@
 package com.mycompany.app;
 
-import java.io.IOException;
+import java.util.Arrays;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args ) throws IOException {
-        Numbers numbers = new Numbers();
+public class App {
+
+    public static void main(String[] args) {
+        boolean logging = args != null && !Arrays.equals(args, new String[]{}) && "-print".equals(args[0]);
+        Resource resource = new Resource();
+        Numbers numbers = new Numbers(logging,resource);
         numbers.calculate();
     }
 }
+

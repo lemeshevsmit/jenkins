@@ -1,29 +1,32 @@
 package com.mycompany.app;
 
-import org.slf4j.Logger;
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Properties;
+
 
 public class Numbers {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Numbers.class);
-    private static final String FORMAT = "| {} * {} = {} ";
+    private final Resource resource;
+    private static final Logger LOGGER = (Logger) LoggerFactory.getLogger("com.mycompany.app.Numbers");
+    private static final String FORMAT = "| {} * {} = {}";
 
+    public Numbers(boolean status, Resource resource) {
+        this.resource = resource;
+        if (!status){
+            LOGGER.setLevel(Level.OFF);
+        }
+    }
 
-    String calculate() throws NullPointerException, NumberFormatException, IOException {
-        Properties prop = new Properties();
-        LOGGER.debug("Try load properties file");
-        prop.load(Numbers.class.getClassLoader().getResourceAsStream("application.properties"));
-        LOGGER.debug("Load successful");
-        String propMax = prop.getProperty("max");
-        String propMin = prop.getProperty("min");
-        String propInc = prop.getProperty("inc");
+    public String calculate() throws NullPointerException, NumberFormatException {
+        LOGGER.debug("Start check input parameters");
+        String propMax = resource.getPropMax();
+        String propMin = resource.getPropMin();
+        String propInc = resource.getPropInc();
         String type = System.getProperty("type");
-        LOGGER.debug("Try check input type");
         if (type == null) {
             calculateInt(propMax, propMin, propInc);
             return "integer";
@@ -67,11 +70,11 @@ public class Numbers {
                 }
             }
         }
-        LOGGER.debug("End");
+        LOGGER.debug("End of program");
         return type;
     }
 
-    private static void calculateBigInteger(String propMax, String propMin, String propInc) {
+    private void calculateBigInteger(String propMax, String propMin, String propInc) {
         BigDecimal min = new BigDecimal(propMin);
         BigDecimal max = new BigDecimal(propMax);
         BigDecimal inc = new BigDecimal(propInc);
@@ -83,7 +86,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateBigDecimal(String propMax, String propMin, String propInc) {
+    private void calculateBigDecimal(String propMax, String propMin, String propInc) {
         BigInteger min = new BigInteger(propMin);
         BigInteger max = new BigInteger(propMax);
         BigInteger inc = new BigInteger(propInc);
@@ -95,7 +98,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateDouble(String propMax, String propMin, String propInc) {
+    private void calculateDouble(String propMax, String propMin, String propInc) {
         double min = Double.parseDouble(propMin);
         double max = Double.parseDouble(propMax);
         double inc = Double.parseDouble(propInc);
@@ -107,7 +110,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateFloat(String propMax, String propMin, String propInc) {
+    private void calculateFloat(String propMax, String propMin, String propInc) {
         float min = Float.parseFloat(propMin);
         float max = Float.parseFloat(propMax);
         float inc = Float.parseFloat(propInc);
@@ -119,7 +122,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateLong(String propMax, String propMin, String propInc) {
+    private void calculateLong(String propMax, String propMin, String propInc) {
         long min = Long.parseLong(propMin);
         long max = Long.parseLong(propMax);
         long inc = Long.parseLong(propInc);
@@ -131,7 +134,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateShort(String propMax, String propMin, String propInc) {
+    private void calculateShort(String propMax, String propMin, String propInc) {
         short min = Short.parseShort(propMin);
         short max = Short.parseShort(propMax);
         short inc = Short.parseShort(propInc);
@@ -143,7 +146,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateByte(String propMax, String propMin, String propInc) {
+    private void calculateByte(String propMax, String propMin, String propInc) {
         byte min = Byte.parseByte(propMin);
         byte max = Byte.parseByte(propMax);
         byte inc = Byte.parseByte(propInc);
@@ -155,7 +158,7 @@ public class Numbers {
         }
     }
 
-    private static void calculateInt(String propMax, String propMin, String propInc) {
+    private void calculateInt(String propMax, String propMin, String propInc) {
         int min = Integer.parseInt(propMin);
         int max = Integer.parseInt(propMax);
         int inc = Integer.parseInt(propInc);
