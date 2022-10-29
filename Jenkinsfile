@@ -8,7 +8,6 @@ agent any
         echo 'Zip created correct'
         }
       }
-    }
     stage('2-Test') {
       steps {
         echo 'Start testing project'
@@ -16,7 +15,6 @@ agent any
         echo 'Testing end'
         }
       }
-    }
     stage('3-Run') {
      steps {
        echo 'Start run project'
@@ -26,5 +24,4 @@ agent any
        }
       }
     }
-  }
 }
