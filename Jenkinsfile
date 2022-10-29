@@ -1,11 +1,12 @@
 pipeline {
-   agent any
-     stages {
-       stage('Build') {
-         steps {
-             git 'https://github.com/lemeshevsmit/jenkins.git'
-             sh 'mvn clean package'
-           }
-         }
-       }
-     }
+agent any
+  stages {
+    stage('Scan') {
+      steps {
+        withSonarQubeEnv(installationName: 'SonarQube') {
+          sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+        }
+      }
+    }
+  }
+}
