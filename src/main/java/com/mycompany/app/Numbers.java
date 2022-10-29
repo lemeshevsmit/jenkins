@@ -74,7 +74,7 @@ public class Numbers {
         return type;
     }
 
-    private void calculateBigInteger(String propMax, String propMin, String propInc) {
+    private void calculateBigDecimal(String propMax, String propMin, String propInc) {
         BigDecimal min = new BigDecimal(propMin);
         BigDecimal max = new BigDecimal(propMax);
         BigDecimal inc = new BigDecimal(propInc);
@@ -86,7 +86,7 @@ public class Numbers {
         }
     }
 
-    private void calculateBigDecimal(String propMax, String propMin, String propInc) {
+    private void calculateBigInteger(String propMax, String propMin, String propInc) {
         BigInteger min = new BigInteger(propMin);
         BigInteger max = new BigInteger(propMax);
         BigInteger inc = new BigInteger(propInc);
