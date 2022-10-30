@@ -12,7 +12,7 @@ public class Numbers {
 
     private final Resource resource;
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger("com.mycompany.app.Numbers");
-    private static final String FORMAT = "| {} * {} = {}";
+    private static final String FORMAT = "| {} * {} = {} ";
 
     public Numbers(boolean status, Resource resource) {
         this.resource = resource;
