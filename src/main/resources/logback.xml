@@ -160,13 +160,6 @@ ScanPeriod: установите интервал времени для отсл
     </appender>
 
     <!--**class name with package**-->
-    <logger name="java.sql.PreparedStatement" value="DEBUG" />
-    <logger name="java.sql.Connection" value="DEBUG" />
-    <logger name="java.sql.Statement" value="DEBUG" />
-    <logger name="com.ibatis" value="DEBUG" />
-    <logger name="com.ibatis.common.jdbc.SimpleDataSource" value="DEBUG" />
-    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>
-    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" value="DEBUG" />
     <logger name="com.mycompany.app.Numbers" value="DEBUG" level="DEBUG"/>
 
     <!-- DEBUG корневого уровня -->
